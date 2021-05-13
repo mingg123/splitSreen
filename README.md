@@ -1,6 +1,6 @@
 # splitSreen
 ```
-  split Sreen using mouse drag
+  마우스 Drag & Drop을 이용하여 스크린 넓이 변경
 ```
 ![Screencast from 2021년 05월 13일 20시 05분 05초](https://user-images.githubusercontent.com/52990629/118117824-0aa14f00-b427-11eb-9719-2e69d9cb01bd.gif)
 
