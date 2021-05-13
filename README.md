@@ -2,6 +2,7 @@
 ```
   split Sreen using mouse drag
 ```
+![Screencast from 2021년 05월 13일 20시 05분 05초](https://user-images.githubusercontent.com/52990629/118117824-0aa14f00-b427-11eb-9719-2e69d9cb01bd.gif)
 
 # Env
 ```
@@ -17,9 +18,8 @@
 ```
   yarn start
 ```
-# Example
-
-![Screencast from 2021년 05월 13일 20시 05분 05초](https://user-images.githubusercontent.com/52990629/118117824-0aa14f00-b427-11eb-9719-2e69d9cb01bd.gif)
 
 
-![image](https://user-images.githubusercontent.com/52990629/118115200-a16c0c80-b423-11eb-8c53-df325b5102b9.png)
+
+
+
