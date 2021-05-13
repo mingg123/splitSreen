@@ -18,8 +18,8 @@
   yarn start
 ```
 # Example
-x-special/nautilus-clipboard
-copy
-file:///home/minjikim/Videos/Screencast%20from%202021%EB%85%84%2005%EC%9B%94%2013%EC%9D%BC%2020%EC%8B%9C%2005%EB%B6%84%2005%EC%B4%88.webm
+
+![Screencast from 2021년 05월 13일 20시 05분 05초](https://user-images.githubusercontent.com/52990629/118117824-0aa14f00-b427-11eb-9719-2e69d9cb01bd.gif)
+
 
 ![image](https://user-images.githubusercontent.com/52990629/118115200-a16c0c80-b423-11eb-8c53-df325b5102b9.png)
