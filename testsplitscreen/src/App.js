@@ -1,8 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
 import { makeStyles } from "@material-ui/core/styles";
-import { colors } from '@material-ui/core';
-import { useState } from 'react';
 const useStyles = makeStyles((theme) => ({
   leftScreen : {
     float: "left",
@@ -10,19 +8,17 @@ const useStyles = makeStyles((theme) => ({
     height: "100px",
     borderRight: "1px solid #b8b8b8",
     marginRight: "-1px",
-    overflowY: "none",
   },
   middelScreen : {
     float: "left",
     width: "33%",
     height: "100px",
-    overflowY: "none",
+
   },
   rightScreen : {
     float: "left",
     width: "33%",
     height: "100px",
-    overflowY: "none",
   },
   leftborder : {
     width:"0.5%",
@@ -73,7 +69,7 @@ function App() {
     leftpos = event.clientX;
     leftDiffpos = leftStartpos-leftpos;
    
-    var totalWidthForLeftAndMiddle = window.innerWidth - document.getElementById("rightWindow").offsetWidth - document.getElementById("hr2").offsetWidth
+    var totalWidthForLeftAndMiddle = window.innerWidth - document.getElementById("rightWindow").offsetWidth - document.getElementById("rightborder").offsetWidth
 
     let resolutionPercentage = 0.0001;
     let resolution = window.innerWidth * resolutionPercentage;
@@ -88,7 +84,7 @@ function App() {
         return;
       }
 
-      if((leftWidthPoint + leftDiffPoint) < 0.1) { // 미들 퍼센트 제한 
+      if((leftWidthPoint + leftDiffPoint) < 0.3) { // 미들 퍼센트 제한 
         return;
       }
 
@@ -102,7 +98,7 @@ function App() {
     rightpos = event.clientX;
     rightDiffpos = rightStartpos-rightpos;
 
-    var totalWidthForRightAndMiddle = window.innerWidth - document.getElementById("leftWindow").offsetWidth - document.getElementById("hr").offsetWidth
+    var totalWidthForRightAndMiddle = window.innerWidth - document.getElementById("leftWindow").offsetWidth - document.getElementById("leftborder").offsetWidth
 
     let resolutionPercentage = 0.0001;
     let resolution = window.innerWidth * resolutionPercentage;
@@ -110,10 +106,10 @@ function App() {
     if (rightDiffpos > -(totalWidthForRightAndMiddle-resolution) && rightDiffpos < (totalWidthForRightAndMiddle-resolution)) {
 
       const rightDiffPoint = rightDiffpos / window.innerWidth;
-      const rightWidthPoint = totalWidthForLeftAndMiddle / window.innerWidth  / 2 ;
+      const rightWidthPoint = totalWidthForRightAndMiddle / window.innerWidth  / 2 ;
 
 
-      if((rightWidthPoint - rightDiffPoint) < 0.1) { // 오른쪽 퍼센트 제한 
+      if((rightWidthPoint - rightDiffPoint) < 0.3) { // 미들 퍼센트 제한 
         return;
       }
 
@@ -136,9 +132,9 @@ function App() {
       <div className={classes.leftScreen} id = "leftWindow">
       LEFT
       </div>
-      <div class={classes.leftborder} id="hr" onMouseDown = {onLeft_mouse_down}  ></div>
+      <div class={classes.leftborder} id="leftborder" onMouseDown = {onLeft_mouse_down}  ></div>
       <div class={classes.middelScreen} id="middleWindow">MIDDLE</div>
-      <div class={classes.rightborder} id="hr2" onMouseDown = {onRight_mouse_down}  ></div>
+      <div class={classes.rightborder} id="rightborder" onMouseDown = {onRight_mouse_down}  ></div>
       <div class={classes.rightScreen} id="rightWindow">RIGHT</div>
     </div>
   );
