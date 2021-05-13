@@ -44,7 +44,7 @@ function App() {
  let leftStartpos = 0;
  let leftDiffpos= 0;
  let isLeftEnable = false;
- let range = 50;
+ let range = 20;
  let rightStartpos = 0
  let rightDiffpos = 0;
  let isRightEnable = false;
@@ -87,9 +87,7 @@ function App() {
      }
    }
    else if (isRightEnable) {
-   Rightpos = event.clientX;
-  
-  
+    Rightpos = event.clientX;
     rightDiffpos = rightStartpos-Rightpos;
   
     var Rightwidth = (window.innerWidth - document.getElementById("leftWindow").offsetWidth)/2 - 5;
