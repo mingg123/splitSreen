@@ -2,76 +2,106 @@ import logo from './logo.svg';
 import './App.css';
 import { makeStyles } from "@material-ui/core/styles";
 import { colors } from '@material-ui/core';
+import { useState } from 'react';
 const useStyles = makeStyles((theme) => ({
   leftScreen : {
     float: "left",
-    width: "50%",
+    width: "33%",
     height: "100px",
     borderRright: "1px solid #b8b8b8",
     marginRight: "-1px",
     overflowY: "scroll",
   },
-  rightScreen : {
+  middelScreen : {
     float: "left",
-    width:"49%",
+    width:"33%",
     height: "100px",
     overflowY:"scroll",
   },
-  middelScreen : {
+  rightScreen : {
+    float: "left",
+    width:"33%",
+    height: "100px",
+    overflowY:"scroll",
+  },
+  leftborder : {
     float: "left",
     width:"0.3%",
     height: "100px",
     backgroundColor: "#888888",
-    // hover : {
-    //   cursor : "pointer"
-    // }
+    cursor : "pointer"
   },
+  rightborder : {
+    float: "left",
+    width:"0.3%",
+    height: "100px",
+    backgroundColor: "#888888",
+    cursor : "wait"
+  }
 }))
 function App() {
  const classes = useStyles();
- let startpos=0;
- let diffpos=0;
- let range=50;
- let isEnable = false;
+ let leftStartpos = 0;
+ let leftDiffpos= 0;
+ let isLeftEnable = false;
+ let range = 50;
+ let rightStartpos = 0
+ let rightDiffpos = 0;
+ let isRightEnable = false;
+ let Leftpos = 0;
+ let Rightpos = 0;
 
- const on_mouse_down = (event) => {
-   console.log("mouse down Event!")
-  startpos = event.clientX + diffpos;
-
-  isEnable = true;
-  console.log("mouse down Event startpos : ")
-  console.log(startpos);
+ const onLeft_mouse_down = (event) => {
+  leftStartpos = event.clientX + leftDiffpos;
+  isLeftEnable = true;
   return false;
  }
 
  const on_mouse_up= (event) => {
-  console.log("mouse up Event")
-  isEnable = false;
+  isLeftEnable = false;
+  isRightEnable = false;
 
   return false;
  }
 
- const on_mouse_move = (event) => {
-   console.log("mouse move Event!");
-  if (isEnable) {
+ const onRight_mouse_down = (event) => {
+  rightStartpos = event.clientX + rightDiffpos;
+  isRightEnable = true;
+ return false;
+}
 
-    let pos = event.clientX;
+ const on_mouse_move = (event) => {
+
+  if (isLeftEnable) {
+    Leftpos = event.clientX;
+    leftDiffpos = leftStartpos-Leftpos;
   
-    console.log(pos);
+    var width = (window.innerWidth - document.getElementById("rightWindow").offsetWidth)/2 - 5;
+  
+    if (leftDiffpos > -(width-range) && leftDiffpos < (width-range)) {
+  
+      document.getElementById("leftWindow").style.width = width - leftDiffpos + "px";
+   
+      document.getElementById("middleWindow").style.width = width - 5 + leftDiffpos + "px"; 
+   
+     }
+   }
+   else if (isRightEnable) {
+   Rightpos = event.clientX;
   
   
-    diffpos = startpos-pos;
+    rightDiffpos = rightStartpos-Rightpos;
   
-    var width = window.innerWidth/2 - 10;
+    var Rightwidth = (window.innerWidth - document.getElementById("leftWindow").offsetWidth)/2 - 5;
+
   
-    if (diffpos > -(width-range) && diffpos < (width-range)) {
+    if (rightDiffpos > -(Rightwidth-range) && rightDiffpos < (Rightwidth-range)) {
   
-     document.getElementById("leftWindow").style.width = width - diffpos + "px";
+     document.getElementById("middleWindow").style.width = Rightwidth - rightDiffpos + "px";
   
-     document.getElementById("rightWindow").style.width = width - 20 + diffpos + "px"; 
+     document.getElementById("rightWindow").style.width = Rightwidth - 5 + rightDiffpos + "px"; 
   
     }
-  
    }
  }
 
@@ -80,11 +110,12 @@ function App() {
 
   return (
     <div className="Screen" onMouseUp ={on_mouse_up} onMouseMove={on_mouse_move}>
-
       <div className={classes.leftScreen} id = "leftWindow">
       LEFT
       </div>
-      <div class={classes.middelScreen} id="hr" onMouseDown = {on_mouse_down}  ></div>
+      <div class={classes.leftborder} id="hr" onMouseDown = {onLeft_mouse_down}  ></div>
+      <div class={classes.middelScreen} id="middleWindow">MIDDLE</div>
+      <div class={classes.rightborder} id="hr2" onMouseDown = {onRight_mouse_down}  ></div>
       <div class={classes.rightScreen} id="rightWindow">RIGHT</div>
     </div>
   );
